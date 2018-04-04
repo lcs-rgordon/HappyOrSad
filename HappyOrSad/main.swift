@@ -8,10 +8,41 @@
 
 import Foundation
 
+// INPUT
 // Get the user input
 var rawInput = readLine()
 
-// Print out the input provided
+// Unwrap rawInput, an optional String, to be sure it is not nil
+guard let input = rawInput else {
+    // Error
+    exit(9)
+}
+
+// Look at the input provided
 print("You said:")
-print(rawInput)
+print(rawInput) // original optional String
+print(input)    // non-optional String created by the guard-let statement
+
+// PROCESS
+// Inspect each character of the String named input
+var happyCount = 0
+var sadCount = 0
+for individualCharacter in input {
+    
+    // DEBUG (see what character we are dealing with right now)
+    print(individualCharacter)
+    
+    // Categorize the character
+    if individualCharacter == "😃" {
+        // "Happy", so add one to a variable to track occurences
+        // of "happy" emojis
+    } else if individualCharacter == "☹️" {
+        // "Sad", so add one to a variable to track occurences
+        // of "sad" emojis
+    }
+    
+}
+
+// Output
+// Tell the user "happy", "sad", or "unsure" based on counts above
 
