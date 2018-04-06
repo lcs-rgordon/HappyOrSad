@@ -9,20 +9,39 @@
 import Foundation
 
 // INPUT
-// Get the user input
-var rawInput = readLine()
+// Deliberately make the contents not valid so loop below runs at least once
+var validInput = ""
 
-// Unwrap rawInput, an optional String, to be sure it is not nil
-guard let input = rawInput else {
-    // Error
-    exit(9)
+// Loop until valid input is given
+while validInput == "" {
+    
+    // Unwrap the given input from user, make sure it is not nil
+    guard let givenInput = readLine() else {
+        
+        // Exit if nil input was received
+        exit(9)
+        
+    }
+    
+    // Show the error message if input is not valid
+    if givenInput.count < 1 || givenInput.count > 255 {
+        
+        print("Please enter a string with at least 1 and no more than 255 characters.")
+        
+    } else {
+        
+        // We have valid input
+        validInput = givenInput
+        
+    }
+    
 }
 
 // PROCESS
 // Inspect each character of the String named input
 var happyCount = 0
 var sadCount = 0
-for individualCharacter in input {
+for individualCharacter in validInput {
     
     // DEBUG (see what character we are dealing with right now)
     // print(individualCharacter)
@@ -46,7 +65,7 @@ for individualCharacter in input {
     
 }
 
-// Output
+// OUTPUT
 // Tell the user "happy", "sad", or "unsure" based on counts above
 if happyCount == 0 && sadCount == 0 {
     print("none")
