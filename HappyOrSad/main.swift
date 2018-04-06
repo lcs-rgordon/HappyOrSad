@@ -47,20 +47,13 @@ for individualCharacter in validInput {
     // print(individualCharacter)
     
     // Categorize the character
-    if individualCharacter == "😃" ||
-        individualCharacter == "😊" ||
-        individualCharacter == "🙂" ||
-        individualCharacter == "😄" {
-        // "Happy", so add one to a variable to track occurences
-        // of "happy" emojis
+    switch individualCharacter {
+    case "😃", "😊", "🙂", "😄":
         happyCount += 1
-    } else if individualCharacter == "☹️" ||
-        individualCharacter == "🙁" ||
-        individualCharacter == "😕" ||
-        individualCharacter == "😔" {
-        // "Sad", so add one to a variable to track occurences
-        // of "sad" emojis
+    case "☹️", "🙁", "😕", "😔":
         sadCount += 1
+    default:
+        break   // do nothing if it's any other character
     }
     
 }
