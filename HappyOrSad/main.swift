@@ -9,31 +9,35 @@
 import Foundation
 
 // INPUT
-// Deliberately make the contents not valid so loop below runs at least once
-var validInput = ""
 
-// Loop until valid input is given
-while validInput == "" {
+// Set the error message to use if bad input found
+let errorMessage = "Please enter a string with at least 1 and no more than 255 characters."
+
+// Loop forever until valid input found
+var validInput = ""
+while true {
     
     // Unwrap the given input from user, make sure it is not nil
     guard let givenInput = readLine() else {
         
-        // Exit if nil input was received
-        exit(9)
+        // Report the error then continue to next iteration of loop to prompt again
+        print(errorMessage)
+        continue
         
     }
     
     // Show the error message if input is not valid
     if givenInput.count < 1 || givenInput.count > 255 {
         
-        print("Please enter a string with at least 1 and no more than 255 characters.")
-        
-    } else {
-        
-        // We have valid input
-        validInput = givenInput
+        // Report the error then continue to next iteration of loop to prompt again
+        print(errorMessage)
+        continue
         
     }
+    
+    // If we got this far, input is guaranteed to be valid
+    validInput = givenInput
+    break   // Very important – must exit the loop
     
 }
 
